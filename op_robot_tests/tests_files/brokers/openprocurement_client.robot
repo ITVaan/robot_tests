@@ -712,7 +712,7 @@ Library  openprocurement_client_helper.py
   \    Set To Dictionary  ${bid.data.parameters[${index}]}  code=${code}
   ${reply}=  Call Method  ${USERS.users['${username}'].client}  create_bid  ${tender}  ${bid}
   Log  ${reply}
-  ${status}=  Set Variable If  '${MODE}'=='openeu'  pending  active
+  ${status}=  Set Variable If  '${MODE}'in['openeu', 'open_competitive_dialogue']  pending  active
   Set To Dictionary  ${reply['data']}  status=${status}
   ${reply_active}=  Call Method  ${USERS.users['${username}'].client}  patch_bid  ${tender}  ${reply}
   Set To Dictionary  ${USERS.users['${username}']}  access_token=${reply['access']['token']}

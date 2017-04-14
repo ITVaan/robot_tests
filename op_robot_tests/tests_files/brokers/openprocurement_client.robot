@@ -27,9 +27,10 @@ Library  openprocurement_client_helper.py
   ${id_map}=  Create Dictionary
   Set To Dictionary  ${USERS.users['${username}']}  id_map=${id_map}
   Log  ${EDR_HOST_URL}
+  Log  ${EDR_API_VERSION}
   Log  ${EDR_USERNAME}
   Log  ${EDR_PASSWORD}
-  ${edr_wrapper}=  prepare edr wrapper  ${EDR_HOST_URL}  ${EDR_USERNAME}  ${EDR_PASSWORD}
+  ${edr_wrapper}=  prepare edr wrapper  ${EDR_HOST_URL} ${EDR_API_VERSION} ${EDR_USERNAME}  ${EDR_PASSWORD}
   Set To Dictionary  ${USERS.users['${username}']}  edr_client=${edr_wrapper}
   Log Variables
 
